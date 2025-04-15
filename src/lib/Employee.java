@@ -43,23 +43,27 @@ public class Employee {
 	 * Jika pegawai adalah warga negara asing gaji bulanan diperbesar sebanyak 50%
 	 */
 	
-	public void setMonthlySalary(int grade) {	
-		if (grade == 1) {
-			EmployeeSalaryData.setMonthlySalary(3000000);
-			if (EmployeePrivate.isForeigner()) {
-				EmployeeSalaryData.setMonthlySalary((int) (3000000 * 1.5));
-			}
-		}else if (grade == 2) {
-			EmployeeSalaryData.setMonthlySalary(5000000);
-			if (EmployeePrivate.isForeigner()) {
-				EmployeeSalaryData.setMonthlySalary((int) (3000000 * 1.5));
-			}
-		}else if (grade == 3) {
-			EmployeeSalaryData.setMonthlySalary(7000000);
-			if (EmployeePrivate.isForeigner()) {
-				EmployeeSalaryData.setMonthlySalary((int) (3000000 * 1.5));
-			}
+	public void setMonthlySalary(int grade) {
+		int baseSalary = getBaseSalary(grade);
+		
+		if(EmployeePrivate.isForeigner()) {
+			baseSalary *= 1.5;
 		}
+		
+		EmployeeSalaryData.setMonthlySalary((int) baseSalary);
+	}
+	
+	private int getBaseSalary(int grade) {
+		if(grade == 1) {
+			return 3000000;
+		}else if(grade == 2) {
+			return 5000000;
+		}else if(grade == 3) {
+			return 7000000;
+		}
+		
+		//Mengembalikan -1 jika grade jika tidak valid
+		return -1;
 	}
 
 	public int getAnnualIncomeTax() {
