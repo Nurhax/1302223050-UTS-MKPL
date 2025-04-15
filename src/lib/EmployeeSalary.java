@@ -7,6 +7,18 @@ public class EmployeeSalary {
 	private int otherMonthlyIncome;
 	private int annualDeductible;
 	
+	public int getMonthlySalary() {
+		return monthlySalary;
+	}
+	
+	public int getOtherMonthlyIncome() {
+		return otherMonthlyIncome;
+	}
+	
+	public int getAnnualDeductible() {
+		return annualDeductible;
+	}
+	
 	public void setMonthlySalary(int monthlySalary) {
 		this.monthlySalary = monthlySalary;
 	}
@@ -19,17 +31,6 @@ public class EmployeeSalary {
 		this.otherMonthlyIncome = income;
 	}
 	
-	public int getMonthlySalary() {
-		return monthlySalary;
-	}
-	
-	public int getOtherMonthlyIncome() {
-		return otherMonthlyIncome;
-	}
-	
-	public int getAnnualDeductible() {
-		return annualDeductible;
-	}
 
 
 }

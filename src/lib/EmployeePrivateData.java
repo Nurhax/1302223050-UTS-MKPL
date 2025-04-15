@@ -12,15 +12,20 @@ public class EmployeePrivateData {
 	private boolean isForeigner;
 	private boolean gender; //true = Laki-laki, false = Perempuan
 	
+	public String getSpouseIdNumber() {
+		return spouseIdNumber;
+	}
+	public List<String> getChildIdNumbers() {
+		return childIdNumbers;
+	}
+	public boolean isForeigner() {
+		return isForeigner;
+	}
+	
 	public void setSpouse(String spouseName, String spouseIdNumber) {
 		this.spouseName = spouseName;
 		this.spouseIdNumber = spouseIdNumber;
 	}
-	
-	public String getSpouseIdNumber() {
-		return spouseIdNumber;
-	}
-	
 	
 	public void setChildNames(List<String> childNames) {
 		this.childNames = childNames;
@@ -30,27 +35,17 @@ public class EmployeePrivateData {
 		this.childIdNumbers = childIdNumbers;
 	}
 	
-	public List<String> getChildIdNumbers() {
-		return childIdNumbers;
-	}
-	
-	public void addChild(String childName, String childIdNumber) {
-		childNames.add(childName);
-		childIdNumbers.add(childIdNumber);
-	}
-	
 	public void setForeigner(boolean isForeigner) {
 		this.isForeigner = isForeigner;
-	}
-	
-	public boolean isForeigner() {
-		return isForeigner;
 	}
 	
 	public void setGender(boolean gender) {
 		this.gender = gender;
 	}
 	
-
+	public void addChild(String childName, String childIdNumber) {
+		childNames.add(childName);
+		childIdNumbers.add(childIdNumber);
+	}
 
 }

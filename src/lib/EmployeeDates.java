@@ -18,11 +18,6 @@ public class EmployeeDates {
 	public int getYearJoined() {
 		return yearJoined;
 	}
-	
-	public void setMonthWorkingInYear(int monthWorkingInYear) {
-		this.monthWorkingInYear = monthWorkingInYear;
-	}
-	
 	public int getMonthJoined() {
 		return monthJoined;
 	}
@@ -30,5 +25,10 @@ public class EmployeeDates {
 	public int getMonthWorkingInYear() {
 		return monthWorkingInYear;
 	}
+	
+	public void setMonthWorkingInYear(int monthWorkingInYear) {
+		this.monthWorkingInYear = monthWorkingInYear;
+	}
+	
 	
 }
