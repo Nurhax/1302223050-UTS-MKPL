@@ -53,6 +53,13 @@ public class Employee {
 		EmployeeSalaryData.setMonthlySalary((int) baseSalary);
 	}
 	
+
+	public int getAnnualIncomeTax() {
+		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
+		getMonthWorkingInYear();
+		return TaxFunction.calculateTax(EmployeePrivate, EmployeeDatesData, EmployeeSalaryData);
+	}
+	
 	private int getBaseSalary(int grade) {
 		if(grade == 1) {
 			return 3000000;
@@ -65,10 +72,8 @@ public class Employee {
 		//Mengembalikan -1 jika grade jika tidak valid
 		return -1;
 	}
-
-	public int getAnnualIncomeTax() {
-		
-		//Menghitung berapa lama pegawai bekerja dalam setahun ini, jika pegawai sudah bekerja dari tahun sebelumnya maka otomatis dianggap 12 bulan.
+	
+	private void getMonthWorkingInYear() {
 		LocalDate date = LocalDate.now();
 		
 		if (date.getYear() == EmployeeDatesData.getYearJoined()) {
@@ -76,7 +81,6 @@ public class Employee {
 		}else {
 			EmployeeDatesData.setMonthWorkingInYear(12);
 		}
-		
-		return TaxFunction.calculateTax(EmployeePrivate, EmployeeDatesData, EmployeeSalaryData);
 	}
+
 }

@@ -15,21 +15,13 @@ public class TaxFunction {
 	 */
 	
 	
-public static int calculateTax(EmployeePrivateData privateData, EmployeeDates datesData, EmployeeSalary salary ) {
+	public static int calculateTax(EmployeePrivateData privateData, EmployeeDates datesData, EmployeeSalary salary ) {
 		
 		int tax = 0;
-		int numberOfChildren = 0;
+		int numberOfChildren = checkNumberOfChildren(privateData);
 		
-		if (datesData.getMonthWorkingInYear() > 12) {
-			System.err.println("More than 12 month working per year");
-		}
-		
-		if (privateData.getChildIdNumbers().size() > 3) {
-			numberOfChildren = 3;
-		}else {
-			numberOfChildren = privateData.getChildIdNumbers().size();
-		}
-		
+		checkValidWorkingMonth(datesData);
+
 		if (privateData.getSpouseIdNumber().equals("")) {
 			tax = (int) Math.round(0.05 * (((salary.getMonthlySalary() + salary.getOtherMonthlyIncome()) * datesData.getMonthWorkingInYear()) - salary.getAnnualDeductible() - (54000000 + 4500000 + (numberOfChildren * 1500000))));
 		}else {
@@ -42,6 +34,20 @@ public static int calculateTax(EmployeePrivateData privateData, EmployeeDates da
 			return tax;
 		}
 			 
+	}
+	
+	private static void checkValidWorkingMonth(EmployeeDates datesData) {
+		if (datesData.getMonthWorkingInYear() > 12) {
+			System.err.println("More than 12 month working per year");
+		}
+	}
+	
+	private static int checkNumberOfChildren(EmployeePrivateData privateData) {
+		if (privateData.getChildIdNumbers().size() > 3) {
+			return 3;
+		}else {
+			return privateData.getChildIdNumbers().size();
+		}
 	}
 	
 }
